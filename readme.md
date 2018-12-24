@@ -5,8 +5,7 @@ A Deno port of [opn](https://github.com/sindresorhus/opn).
 ## Usage
 
 ```typescript
-import { opn } from "./index.ts";
-import { opn } from "https://hashrock.github.io/dino-opn/opn.ts";
+import { opn } from "https://hashrock.github.io/deno-opn/opn.ts";
 
 async function main() {
 	// Opens the image in the default image viewer
