@@ -9,9 +9,7 @@ import { opn } from "https://hashrock.github.io/deno-opn/opn.ts";
 
 async function main() {
 	// Opens the image in the default image viewer
-	await opn("unicorn.png").then(() => {
-		// image viewer closed
-	});
+	await opn("unicorn.png");
 
 	// Opens the url in the default browser
 	await opn("http://sindresorhus.com");
