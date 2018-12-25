@@ -61,9 +61,16 @@ export async function opn(target: string, opts?: OpnOptions) {
       args = args.concat(appArgs);
     }
   } else {
-    console.error("Sorry, Linux is not supported.");
-    //because There is no `__dirname`
-    //https://github.com/denoland/deno/issues/1286
+    //Linux
+		if (openApp) {
+			cmd = openApp;
+		} else {
+			cmd = "gio open";
+		}
+
+		if (appArgs.length > 0) {
+			args = args.concat(appArgs);
+		}
   }
 
   args.push(target);
