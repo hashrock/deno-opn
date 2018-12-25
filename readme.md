@@ -28,11 +28,9 @@ main();
 
 ## API
 
-Uses the command `open` on macOS, `start` on Windows.
+Uses the command `open` on macOS, `start` on Windows, `gio open` on Linux.
 
-Linux is not supported for now.
-
-Related Issue : [deno#1286](https://github.com/denoland/deno/issues/1286)
+Linux is still partial support. PRs welcome :)
 
 ## License
 
