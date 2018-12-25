@@ -62,15 +62,16 @@ export async function opn(target: string, opts?: OpnOptions) {
     }
   } else {
     //Linux
-		if (openApp) {
-			cmd = openApp;
-		} else {
-			cmd = "gio open";
-		}
+    if (openApp) {
+      cmd = openApp;
+    } else {
+      cmd = "gio";
+      args.push("open");
+    }
 
-		if (appArgs.length > 0) {
-			args = args.concat(appArgs);
-		}
+    if (appArgs.length > 0) {
+      args = args.concat(appArgs);
+    }
   }
 
   args.push(target);
