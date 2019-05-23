@@ -1,4 +1,4 @@
-import { run, platform } from "deno";
+const { run, platform } = Deno;
 
 //WSL is not supported
 //because "platform" in WSL returns just `{ arch: "x64", os: "linux" }`
