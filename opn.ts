@@ -1,4 +1,4 @@
-const { run, platform } = Deno;
+const { run, build } = Deno;
 
 //WSL is not supported
 //because "platform" in WSL returns just `{ arch: "x64", os: "linux" }`
@@ -31,10 +31,12 @@ export async function opn(target: string, opts?: OpnOptions) {
   let cmd: string;
   let args = [];
   const wait = optsWithDefault.wait;
-  const appArgs = optsWithDefault.app.slice(1);
-  const openApp: string | undefined = optsWithDefault.app[0];
+  const appArgs = optsWithDefault.app?.slice(1) || [];
+  const openApp: string | undefined = optsWithDefault.app
+    ? optsWithDefault.app[0]
+    : undefined;
 
-  if (platform.os === "mac") {
+  if (build.os === "mac") {
     cmd = "open";
 
     if (wait) {
@@ -44,7 +46,7 @@ export async function opn(target: string, opts?: OpnOptions) {
     if (openApp) {
       args.push("-a", openApp);
     }
-  } else if (platform.os === "win" || isWsl) {
+  } else if (build.os === "win" || isWsl) {
     cmd = "cmd" + (isWsl ? ".exe" : "");
     args.push("/c", "start", "/b");
     target = target.replace(/&/g, "^&");
@@ -76,7 +78,7 @@ export async function opn(target: string, opts?: OpnOptions) {
 
   args.push(target);
 
-  if (platform.os === "mac" && appArgs.length > 0) {
+  if (build.os === "mac" && appArgs.length > 0) {
     args.push("--args");
     args = args.concat(appArgs);
   }
