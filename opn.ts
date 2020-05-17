@@ -26,7 +26,7 @@ export interface OpnOptions {
 export async function opn(target: string, opts?: OpnOptions) {
   const optsWithDefault: OpnOptions = Object.assign(
     { wait: true, app: [] },
-    opts
+    opts,
   );
   let cmd: string;
   let args = [];
@@ -36,7 +36,7 @@ export async function opn(target: string, opts?: OpnOptions) {
     ? optsWithDefault.app[0]
     : undefined;
 
-  if (build.os === "mac") {
+  if (build.os === "darwin") {
     cmd = "open";
 
     if (wait) {
@@ -46,7 +46,7 @@ export async function opn(target: string, opts?: OpnOptions) {
     if (openApp) {
       args.push("-a", openApp);
     }
-  } else if (build.os === "win" || isWsl) {
+  } else if (build.os === "windows" || isWsl) {
     cmd = "cmd" + (isWsl ? ".exe" : "");
     args.push("/c", "start", "/b");
     target = target.replace(/&/g, "^&");
@@ -78,14 +78,14 @@ export async function opn(target: string, opts?: OpnOptions) {
 
   args.push(target);
 
-  if (build.os === "mac" && appArgs.length > 0) {
+  if (build.os === "darwin" && appArgs.length > 0) {
     args.push("--args");
     args = args.concat(appArgs);
   }
   const process = run({
-    args: [cmd, ...args],
+    cmd: [cmd, ...args],
     stdout: "inherit",
-    stderr: "inherit"
+    stderr: "inherit",
   });
 
   if (wait) {
