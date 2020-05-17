@@ -2,7 +2,7 @@ import { opn } from "./opn.ts";
 
 async function main() {
   // Opens the image in the default image viewer
-  await opn("unicorn.png");
+  // await opn("unicorn.png");
 
   // Opens the url in the default browser
   await opn("http://sindresorhus.com");
@@ -12,7 +12,7 @@ async function main() {
 
   // Specify app arguments
   await opn("http://sindresorhus.com", {
-    app: ["chrome", "--incognito"]
+    app: ["chrome", "--incognito"],
   });
 }
 
