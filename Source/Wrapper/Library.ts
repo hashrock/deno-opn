@@ -2,6 +2,7 @@
 
 import { OpenOptions } from './Options.ts'
 import openWith from '../Open.js'
+import { system , notSupported } from '../Supported.js'
 
 
 /**
@@ -13,11 +14,14 @@ import openWith from '../Open.js'
 
 export async function open( target : string , options : OpenOptions = {} ){
     
+    if(notSupported)
+        return Promise.reject(`deno-opn doesn't support '${ system }'`);
+    
     options.wait ??= true;
     options.with ??= [];
     
     const [ app , ...parameter ] = options.with;
     const { wait } = options;
     
-    openWith({ target , wait , app , parameter });
+    return openWith({ system , target , wait , app , parameter });
 }
