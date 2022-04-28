@@ -5,18 +5,7 @@ const { run, build } = Deno;
 //and there is no `os.release()`.
 const isWsl = false;
 
-export interface OpnOptions {
-  /**
-   * Specify the app to open the `target` with,
-   * or an array with the app and app arguments.
-   */
-  app?: string[];
-  /**
-   * Wait for the opened app to exit before fulfilling the promise.
-   * If `false` it's fulfilled immediately when opening the app.
-   */
-  wait?: boolean;
-}
+import { OpnOptions } from './Options.ts'
 
 /**
  * Returns a promise for the child process.
