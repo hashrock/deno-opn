@@ -4,7 +4,7 @@ import { open } from 'https://github.com/hashrock/deno-opn/raw/master/mod.ts'
 
 // Opens the image in the default image viewer
 
-// await open("unicorn.png");
+// await open('unicorn.png');
 
 
 // Opens the url in the default browser

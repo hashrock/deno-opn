@@ -3,31 +3,61 @@
 ***A port of [OPN]***
 
 <br>
+<br>
 
 ## Usage
 
-```typescript
-import { opn } from "https://denopkg.com/hashrock/deno-opn/opn.ts";
+#### Import
 
-async function main() {
-	// Opens the image in the default image viewer
-	await opn("unicorn.png");
-
-	// Opens the url in the default browser
-	await opn("http://sindresorhus.com");
-
-	// Specify the app to open in
-	await opn("http://sindresorhus.com", { app: ["firefox"] });
-
-	// Specify app arguments
-	await opn("http://sindresorhus.com", {
-		app: ["chrome", "--incognito"]
-	});
-}
-
-main();
+```js
+import { open } from 'https://github.com/hashrock/deno-opn/raw/master/mod.ts'
 ```
 
+<br>
+
+#### File
+
+*Open a file with the default image viewer.*
+
+```js
+await open('unicorn.png');
+```
+
+<br>
+
+#### URL
+
+*Open a URL in the default browser.*
+
+```js
+await open('http://sindresorhus.com');
+```
+
+<br>
+
+#### With
+
+*Open the target with a specific program.*
+
+```js
+await open('http://sindresorhus.com',{ 
+    with: [ 'firefox' ] 
+});
+```
+
+<br>
+
+#### Arguments
+
+*Supply the program with arguments.*
+
+```js
+await open('http://sindresorhus.com',{
+    with: [ 'chrome' , '--incognito' ]
+});
+```
+
+<br>
 <br>
 
 ## Design
