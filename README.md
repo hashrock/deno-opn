@@ -87,14 +87,14 @@ await open('http://sindresorhus.com',{
 [Badge Port]: https://img.shields.io/badge/Port-Hashrock-red.svg?style=for-the-badge
 [Badge Opn]: https://img.shields.io/badge/Opn-Sindre_Sorhus-green.svg?style=for-the-badge
 
-[Badge Windows]: https://img.shields.io/badge/-0078D6.svg?style=for-the-badge&logo=windows&logoColor=white&logoWidth=200
-[Badge Linux]: https://img.shields.io/badge/-87CF3E.svg?style=for-the-badge&logo=linux&logoColor=white&logoWidth=200
-[Badge MacOS]: https://img.shields.io/badge/-darkgray.svg?style=for-the-badge&logo=apple&logoColor=white&logoWidth=200
+[Badge Windows]: https://img.shields.io/badge/-0078D6.svg?style=for-the-badge&logo=windows&logoColor=white&logoWidth=200 'Windows'
+[Badge Linux]: https://img.shields.io/badge/-87CF3E.svg?style=for-the-badge&logo=linux&logoColor=white&logoWidth=200 'Linux'
+[Badge MacOS]: https://img.shields.io/badge/-darkgray.svg?style=for-the-badge&logo=apple&logoColor=white&logoWidth=200 'MacOS'
 
-[Sindre Sorhus]: https://sindresorhus.com
+[Sindre Sorhus]: https://sindresorhus.com 'Sorhus Website'
 
-[Hashrock]: https://github.com/hashrock
-[opn]: https://github.com/sindresorhus/opn
+[Hashrock]: https://github.com/hashrock 'Hashrocks GitHub Profile'
+[opn]: https://github.com/sindresorhus/opn 'The OPN Project Page'
 
 
-[License]: LICENSE
+[License]: LICENSE 'The license of this repository'
