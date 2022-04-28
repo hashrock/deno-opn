@@ -35,10 +35,11 @@ export async function opn( target : string , options : OpenOptions = {} ){
     
     const { wait , app } = options;
     
-    const cmd = furnish({ 
+    
+    const cmd = furnish(system,{
         parameter : app.slice(0) ,
         app : app[0] ,
-        system , target , wait 
+        target , wait 
     });   
     
     
