@@ -23,7 +23,7 @@ log('System:',Deno.build,'\n');
 
 
 await library.open('https://deno.land/',{
-    app : [ 'firefox' ]
+    with : [ 'firefox' ]
 });
 
 

@@ -15,12 +15,12 @@ await open('http://sindresorhus.com');
 // Specify the app to open in
 
 await open('http://sindresorhus.com',{ 
-    app: [ 'firefox' ] 
+    with: [ 'firefox' ] 
 });
 
 
 // Specify app arguments
 
 await open('http://sindresorhus.com',{
-    app: [ 'chrome' , '--incognito' ]
+    with: [ 'chrome' , '--incognito' ]
 });

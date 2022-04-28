@@ -14,7 +14,10 @@ import openWith from '../Open.js'
 export async function open( target : string , options : OpenOptions = {} ){
     
     options.wait ??= true;
-    options.app ??= [];
+    options.with ??= [];
     
-    openWith({ target , ...options });
+    const [ app , ...parameter ] = options.with;
+    const { wait } = options;
+    
+    openWith({ target , wait , app , parameter });
 }

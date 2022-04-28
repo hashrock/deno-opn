@@ -12,12 +12,12 @@ export interface OpenOptions {
    * Optionally add arguments for the app.
    */
    
-  app?: string[];
+  with ?: string[];
   
   
   /**
    * Wait for the app to close.
    */
   
-  wait?: boolean;
+  wait ?: boolean;
 }

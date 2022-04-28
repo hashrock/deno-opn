@@ -22,15 +22,11 @@ export default async function open(options){
     if(!supported.includes(system))
         return Promise.reject(`deno-opn doesn't support '${ system }'`);
     
-    const { wait , app } = options;
-    
     const furnish = Systems[system].default;
     
-    const command = furnish({
-        parameter : app.slice(1) ,
-        app : app[0] ,
-        target : options.target , wait 
-    });   
+    const command = furnish(options);   
     
-    exec({ command , detached : !wait });
+    const detached = ! options.wait;
+    
+    exec({ command , detached });
 }
