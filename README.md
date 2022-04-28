@@ -1,6 +1,6 @@
-# deno-opn
+# Deno Opn
 
-A Deno port of [opn](https://github.com/sindresorhus/opn).
+*A port of [opn].*
 
 ## Usage
 
@@ -36,8 +36,13 @@ Linux is still partial support. PRs welcome :)
 
 Original version:
 
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+MIT © [Sindre Sorhus]
 
 Ported by hashrock.
 
 This port version inherits the above license.
+
+<!----------------------------------------------------------------------------->
+
+[Sindre Sorhus]: https://sindresorhus.com
+[opn]: https://github.com/sindresorhus/opn
