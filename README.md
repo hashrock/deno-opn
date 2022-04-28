@@ -7,7 +7,9 @@
 
 ## Usage
 
-#### Import
+<br>
+
+### Import
 
 ##### Latest
 
@@ -28,7 +30,7 @@ import { open } from 'https://github.com/hashrock/deno-opn/<Version Tag>/mod.ts'
 
 <br>
 
-#### File
+### File
 
 *Open a file with the default image viewer.*
 
@@ -38,7 +40,7 @@ await open('unicorn.png');
 
 <br>
 
-#### URL
+### URL
 
 *Open a URL in the default browser.*
 
@@ -48,7 +50,7 @@ await open('http://sindresorhus.com');
 
 <br>
 
-#### With
+### With
 
 *Open the target with a specific program.*
 
@@ -60,7 +62,7 @@ await open('http://sindresorhus.com',{
 
 <br>
 
-#### Arguments
+### Arguments
 
 *Supply the program with arguments.*
 
@@ -78,9 +80,7 @@ await open('http://sindresorhus.com',{
 *Internally system specific commands* <br>
 *are used to start the child processes.*
 
-
-
-
+<br>
 
 | System | Command
 |:------:|:-------
@@ -88,11 +88,14 @@ await open('http://sindresorhus.com',{
 | ![Badge MacOS]  | `start`
 | ![Badge Windows] | `open`
 
+<br>
+<br>
 
 ## Contributions
 
 ***PRs welcome :)***
 
+<br>
 
 <!----------------------------------------------------------------------------->
 
