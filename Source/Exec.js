@@ -2,7 +2,7 @@
 const { run } = Deno;
 
 
-export default async function exec({ command , detached }){
+export default function exec({ command , detached }){
     
     const process = run({
         stdout : 'inherit' ,

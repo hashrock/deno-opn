@@ -12,7 +12,7 @@ import { system , notSupported } from '../Supported.js'
  *  @returns A promise for the child process
  */
 
-export async function open( target : string , options : OpenOptions = {} ){
+export function open( target : string , options : OpenOptions = {} ){
     
     if(notSupported)
         return Promise.reject(`deno-opn doesn't support '${ system }'`);
