@@ -9,9 +9,22 @@
 
 #### Import
 
+##### Latest
+
+*Use the bleeding edge.*
+
 ```js
 import { open } from 'https://github.com/hashrock/deno-opn/raw/master/mod.ts'
 ```
+
+##### Version
+
+*Use a specific **[Release]** tag.*
+
+```js
+import { open } from 'https://github.com/hashrock/deno-opn/<Version Tag>/mod.ts'
+```
+
 
 <br>
 
@@ -96,5 +109,5 @@ await open('http://sindresorhus.com',{
 [Hashrock]: https://github.com/hashrock 'Hashrocks GitHub Profile'
 [opn]: https://github.com/sindresorhus/opn 'The OPN Project Page'
 
-
+[Release]: https://github.com/hashrock/deno-opn/releases
 [License]: LICENSE 'The license of this repository'
