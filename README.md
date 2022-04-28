@@ -11,9 +11,9 @@
 <br>
 <br>
     
-</div>
-
 ## Usage
+
+</div>
 
 <br>
 
@@ -83,6 +83,8 @@ await open('http://sindresorhus.com',{
 <br>
 <br>
 
+<div align = center>
+
 ## Design
 
 *Internally system specific commands* <br>
@@ -90,10 +92,10 @@ await open('http://sindresorhus.com',{
 
 <br>
 
-| System | Command
-|:------:|:-------
-| ![Badge Linux]  | `gio open`
-| ![Badge MacOS]  | `start`
+| System           | Command
+|:----------------:|:----------:
+| ![Badge Linux]   | `gio open`
+| ![Badge MacOS]   | `start`
 | ![Badge Windows] | `open`
 
 <br>
@@ -104,6 +106,8 @@ await open('http://sindresorhus.com',{
 ***PRs welcome :)***
 
 <br>
+
+</div>
 
 <!----------------------------------------------------------------------------->
 
