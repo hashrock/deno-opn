@@ -1,4 +1,4 @@
-const { run , build } = Deno;
+const { build } = Deno;
 const { os } = build;
 
 let system = os + '';
@@ -8,8 +8,8 @@ let system = os + '';
 //and there is no `os.release()`.
 const isWsl = false;
 
-
-import furnish from './Furnish.js'
+import * as Systems from './Systems.js'
+import exec from './Exec.js'
 
 const supported = [ 'linux' , 'darwin' , 'windows' , 'wsl' ];
 
@@ -22,35 +22,15 @@ export default async function open(options){
     if(!supported.includes(system))
         return Promise.reject(`deno-opn doesn't support '${ system }'`);
     
-    options.wait ??= true;
-    options.app ??= [];
-    
-    
     const { wait , app } = options;
     
+    const furnish = Systems[system].default;
     
-    const cmd = furnish(system,{
+    const command = furnish({
         parameter : app.slice(1) ,
         app : app[0] ,
         target : options.target , wait 
     });   
     
-    const process = run({
-        stdout : 'inherit' ,
-        stderr : 'inherit' ,
-        cmd
-    });
-
-    if(wait)
-        return new Promise(async (resolve, reject) => {
-            
-            const { success , code } = await process.status();
-
-            if(success)
-                resolve(process);
-            else
-                reject(`Exited with code ${ code }`);
-        });
-    
-    return Promise.resolve(process);
+    exec({ command , detached : !wait });
 }
