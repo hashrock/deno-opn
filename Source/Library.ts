@@ -19,15 +19,17 @@ export async function opn( target : string , opts ?: OpnOptions ){
     const optsWithDefault : OpnOptions = Object.assign({ wait: true, app: [] },opts);
     
     let cmd: string;
-    let args = [];
+    let args : string[] = [];
     
-    const wait = optsWithDefault.wait;
-    const appArgs = optsWithDefault.app?.slice(1) || [];
-    const openApp: string | undefined = optsWithDefault.app
-        ? optsWithDefault.app[0]
+    const { wait , app } = optsWithDefault;
+    
+    const appArgs = app?.slice(1) || [];
+    const openApp: string | undefined = app
+        ? app[0]
         : undefined;
 
-    if(build.os === "darwin"){
+    switch(build.os){
+    case 'darwin':
         
         cmd = "open";
 
@@ -36,9 +38,13 @@ export async function opn( target : string , opts ?: OpnOptions ){
 
         if(openApp)
             args.push("-a", openApp);
-    } else
-    if(build.os === "windows" || isWsl){
         
+        break;
+    case 'windows':
+    
+        if(isWsl)
+            return Promise.reject(`deno-opn doesn't support WSL`);
+            
         cmd = "cmd" + (isWsl ? ".exe" : "");
         args.push("/c", "start", "/b");
         target = target.replace(/&/g, "^&");
@@ -52,8 +58,8 @@ export async function opn( target : string , opts ?: OpnOptions ){
         if(appArgs.length > 0)
             args = args.concat(appArgs);
     
-    } else {
-        //Linux
+        break;
+    case 'linux':
         
         if (openApp) {
             cmd = openApp;
@@ -64,7 +70,12 @@ export async function opn( target : string , opts ?: OpnOptions ){
 
         if(appArgs.length > 0)
             args = args.concat(appArgs);
+        
+        break;
+    default:
+        return Promise.reject(`deno-opn doesn't support '${ build.os }'`);
     }
+
 
     args.push(target);
 
