@@ -5,7 +5,7 @@
  *  Customize the way the target is opened.
  */
 
-export interface OpnOptions {
+export interface OpenOptions {
     
   /**
    * Specify the app to open the `target` with.
