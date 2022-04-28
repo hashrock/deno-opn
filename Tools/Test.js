@@ -1,4 +1,4 @@
-#!/usr/bin/env -S deno run --allow-read=../
+#!/usr/bin/env -S deno run --allow-read=../ --allow-run
 
 import { fromFileUrl , dirname , normalize } from 'https://deno.land/std/path/mod.ts';
 
@@ -19,7 +19,12 @@ log('Library Entry Point:',path,'\n');
 
 const library = await import(path);
 
+log(Deno.build)
 
+
+await library.opn("https://deno.land/", {
+  app: ["firefox"],
+});
 
 
 function executionDirectory(){

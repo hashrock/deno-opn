@@ -14,16 +14,17 @@ import { OpnOptions } from './Options.ts'
  * @param opnOptions
  */
  
-export async function opn( target : string , opts ?: OpnOptions ){
+export async function opn( target : string , options : OpnOptions = {} ){
     
-    const optsWithDefault : OpnOptions = Object.assign({ wait: true, app: [] },opts);
+    options.wait ??= true;
+    options.app ??= [];
     
     let cmd: string;
-    let args : string[] = [];
+    let parameter : string[] = [];
     
-    const { wait , app } = optsWithDefault;
+    const { wait , app } = options;
     
-    const appArgs = app?.slice(1) || [];
+    const arguments = app.slice(1);
     const openApp: string | undefined = app
         ? app[0]
         : undefined;
@@ -34,10 +35,10 @@ export async function opn( target : string , opts ?: OpnOptions ){
         cmd = "open";
 
         if(wait)
-            args.push("-W");
+            parameter.push("-W");
 
         if(openApp)
-            args.push("-a", openApp);
+            parameter.push("-a", openApp);
         
         break;
     case 'windows':
@@ -46,17 +47,19 @@ export async function opn( target : string , opts ?: OpnOptions ){
             return Promise.reject(`deno-opn doesn't support WSL`);
             
         cmd = "cmd" + (isWsl ? ".exe" : "");
-        args.push("/c", "start", "/b");
-        target = target.replace(/&/g, "^&");
+        
+        parameter.push("/c", "start", "/b");
+        
+        target = target.replace(/&/g,'^&');
 
         if(wait)
-            args.push("/wait");
+            parameter.push('/wait');
 
         if(openApp)
-            args.push(openApp);
+            parameter.push(openApp);
 
-        if(appArgs.length > 0)
-            args = args.concat(appArgs);
+        if(arguments.length > 0)
+            parameter = [ ...parameter , ...arguments ];
     
         break;
     case 'linux':
@@ -64,12 +67,12 @@ export async function opn( target : string , opts ?: OpnOptions ){
         if (openApp) {
             cmd = openApp;
         } else {
-            cmd = "gio";
-            args.push("open");
+            cmd = 'gio';
+            parameter.push('open');
         }
 
-        if(appArgs.length > 0)
-            args = args.concat(appArgs);
+        if(arguments.length > 0)
+            parameter = [ ...parameter , ...arguments ];
         
         break;
     default:
@@ -77,30 +80,29 @@ export async function opn( target : string , opts ?: OpnOptions ){
     }
 
 
-    args.push(target);
+    parameter.push(target);
 
-    if(build.os === "darwin" && appArgs.length > 0){
-        args.push("--args");
-        args = args.concat(appArgs);
+    if(build.os === 'darwin' && arguments.length > 0){
+        parameter.push('--parameter');
+        parameter = parameter.concat(arguments);
     }
     
     const process = run({
-        cmd: [cmd, ...args],
-        stdout: "inherit",
-        stderr: "inherit",
+        cmd : [ cmd , ...parameter ],
+        stdout : 'inherit' ,
+        stderr : 'inherit' ,
     });
 
-    if(wait){
+    if(wait)
         return new Promise(async (resolve, reject) => {
             
-            let status = await process.status();
+            const { success , code } = await process.status();
 
-            if(status.success)
+            if(success)
                 resolve(process);
             else
-                reject(new Error("Exited with code " + status.code));
+                reject(`Exited with code ${ code }`);
         });
-    }
     
     return Promise.resolve(process);
 }
