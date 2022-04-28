@@ -19,11 +19,11 @@ log('Library Entry Point:',path,'\n');
 
 const library = await import(path);
 
-log(Deno.build)
+log('System:',Deno.build,'\n');
 
 
-await library.opn("https://deno.land/", {
-  app: ["firefox"],
+await library.open('https://deno.land/',{
+    app : [ 'firefox' ]
 });
 
 

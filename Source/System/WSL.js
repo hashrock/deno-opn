@@ -1,19 +1,7 @@
 
 
-export default function furnish({ target , app , wait, parameter }){
-    
-    const command = [ 'cmd.exe' , '/c' , 'start' , '/b' ];
+import furnishWindows from './Windows.js'
 
-    if(wait)
-        command.push('/wait');
-
-    if(app)
-        command.push(app);
-
-    command.push(...parameter);
-    
-    target = target.replace(/&/g,'^&');
-    command.push(target);
-    
-    return command;
+export default function furnish(args){
+    return [ 'cmd.exe' , ...furnishWindows(args).slice(1) ];
 }

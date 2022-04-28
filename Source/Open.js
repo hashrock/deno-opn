@@ -8,20 +8,13 @@ let system = os + '';
 //and there is no `os.release()`.
 const isWsl = false;
 
-import { OpenOptions } from './Options.ts'
 
 import furnish from './Furnish.js'
 
 const supported = [ 'linux' , 'darwin' , 'windows' , 'wsl' ];
 
 
-/**
- * Returns a promise for the child process.
- * @param target The thing you want to open. Can be a URL, file, or executable.
- * @param opnOptions
- */
- 
-export async function opn( target : string , options : OpenOptions = {} ){
+export default async function open(options){
     
     if(isWsl)
         system = 'wsl';
@@ -37,11 +30,10 @@ export async function opn( target : string , options : OpenOptions = {} ){
     
     
     const cmd = furnish(system,{
-        parameter : app.slice(0) ,
+        parameter : app.slice(1) ,
         app : app[0] ,
-        target , wait 
+        target : options.target , wait 
     });   
-    
     
     const process = run({
         stdout : 'inherit' ,

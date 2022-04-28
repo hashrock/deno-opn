@@ -7,4 +7,4 @@
  *  but the source code stays in it's own folder
  */
 
-export * from './Source/Library.ts';
+export * from './Source/Wrapper/Library.ts';
