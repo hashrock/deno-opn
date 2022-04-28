@@ -1,4 +1,4 @@
-# Deno Opn
+# Deno Opn [![Badge License]][License] [![Badge Port]][Hashrock] [![Badge Opn]][Opn]
 
 *A port of [opn].*
 
@@ -32,17 +32,17 @@ Uses the command `open` on macOS, `start` on Windows, `gio open` on Linux.
 
 Linux is still partial support. PRs welcome :)
 
-## License
-
-Original version:
-
-MIT © [Sindre Sorhus]
-
-Ported by hashrock.
-
-This port version inherits the above license.
 
 <!----------------------------------------------------------------------------->
 
+[Badge License]: https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge
+[Badge Port]: https://img.shields.io/badge/Port-Hashrock-red.svg?style=for-the-badge
+[Badge Opn]: https://img.shields.io/badge/Opn-Sindre_Sorhus-green.svg?style=for-the-badge
+
 [Sindre Sorhus]: https://sindresorhus.com
+
+[Hashrock]: https://github.com/hashrock
 [opn]: https://github.com/sindresorhus/opn
+
+
+[License]: LICENSE
