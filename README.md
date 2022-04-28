@@ -1,9 +1,17 @@
-# Deno Opn [![Badge License]][License] [![Badge Port]][Hashrock] [![Badge Opn]][Opn]
+<div align = center>
 
+# Deno Opn
 ***A port of [OPN]***
 
 <br>
 <br>
+    
+[![Badge License]][License] [![Badge Port]][Hashrock] [![Badge Opn]][Opn]
+
+<br>
+<br>
+    
+</div>
 
 ## Usage
 
