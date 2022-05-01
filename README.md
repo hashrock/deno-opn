@@ -32,9 +32,20 @@ import { open } from 'https://github.com/hashrock/deno-opn/raw/master/mod.ts'
 *Use a specific **[Release]** tag.*
 
 ```js
-import { open } from 'https://github.com/hashrock/deno-opn/<Version Tag>/mod.ts'
+import { open } from 'https://github.com/hashrock/deno-opn/raw/<Version Tag>/mod.ts'
 ```
 
+v2.0.0
+
+```js
+import { open } from 'https://github.com/hashrock/deno-opn/raw/v2.0.0/mod.ts'
+```
+
+v1.1.1(legacy)
+
+```js
+import { opn } from 'https://github.com/hashrock/deno-opn/raw/v1.1.1/opn.ts'
+```
 
 <br>
 
