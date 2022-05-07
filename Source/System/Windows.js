@@ -1,19 +1,18 @@
+export default function furnish({ target, app, wait, parameter }) {
+  const command = ["cmd", "/c", "start", "/b"];
 
+  if (wait) {
+    command.push("/wait");
+  }
 
-export default function furnish({ target , app , wait, parameter }){
-    
-    const command = [ 'cmd' , '/c' , 'start' , '/b' ];
+  if (app) {
+    command.push(app);
+  }
 
-    if(wait)
-        command.push('/wait');
+  command.push(...parameter);
 
-    if(app)
-        command.push(app);
+  target = target.replace(/&/g, "^&");
+  command.push(target);
 
-    command.push(...parameter);
-    
-    target = target.replace(/&/g,'^&');
-    command.push(target);
-    
-    return command;
+  return command;
 }

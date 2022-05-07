@@ -1,22 +1,17 @@
+import windows from "./System/Windows.js";
+import darwin from "./System/Darwin.js";
+import linux from "./System/Linux.js";
+import wsl from "./System/WSL.js";
 
+import exec from "./Exec.js";
 
-import windows from './System/Windows.js' 
-import darwin from './System/Darwin.js' 
-import linux from './System/Linux.js' 
-import wsl from './System/WSL.js'
+const Systems = { windows, darwin, linux, wsl };
 
-import exec from './Exec.js'
+export default function open(options) {
+  const { system, wait } = options;
 
-
-const Systems = { windows , darwin , linux , wsl };
-
-
-export default function open(options){
-    
-    const { system  , wait } = options;
-    
-    return exec({
-        detached : ! wait ,
-        command : Systems[system](options)
-    });
+  return exec({
+    detached: !wait,
+    command: Systems[system](options),
+  });
 }

@@ -1,27 +1,21 @@
+export default function exec({ command, detached }) {
+  const process = Deno.run({
+    stdout: "inherit",
+    stderr: "inherit",
+    cmd: command,
+  });
 
-const { run } = Deno;
+  if (detached) {
+    return Promise.resolve(process);
+  }
 
+  return new Promise(async (resolve, reject) => {
+    const { success, code } = await process.status();
 
-export default function exec({ command , detached }){
-    
-    const process = run({
-        stdout : 'inherit' ,
-        stderr : 'inherit' ,
-        cmd : command
-    });
-    
-    
-    if(detached)
-        return Promise.resolve(process);
-    
-    
-    return new Promise(async (resolve,reject) => {
-        
-        const { success , code } = await process.status();
+    if (success) {
+      return resolve(process);
+    }
 
-        if(success)
-            return resolve(process);
-        
-        reject(`Exited with code ${ code }`);
-    });
+    reject(`Exited with code ${code}`);
+  });
 }

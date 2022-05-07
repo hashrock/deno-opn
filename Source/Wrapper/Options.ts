@@ -1,4 +1,3 @@
-
 /**
  *  Opening Options
  *
@@ -6,18 +5,16 @@
  */
 
 export interface OpenOptions {
-    
   /**
    * Specify the app to open the `target` with.
    * Optionally add arguments for the app.
    */
-   
-  with ?: string[];
-  
-  
+
+  with?: string[];
+
   /**
    * Wait for the app to close.
    */
-  
-  wait ?: boolean;
+
+  wait?: boolean;
 }
