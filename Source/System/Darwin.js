@@ -1,5 +1,5 @@
 export default function furnish({ target, app, wait, parameter }) {
-  const command = ["cmd"];
+  const command = ["open"];
 
   if (wait) {
     command.push("-W");
